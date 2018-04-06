@@ -28,7 +28,7 @@ natToInt NaN = -1
 natToInt (Successor k) = 1 + (natToInt k)
 
 export Show Natural where
-    show natVal = (show (1 + (natToInt natVal)))
+    show natVal = (show (natToInt natVal))
 
 export Eq Natural where
     (==) NaN _ = False
@@ -84,7 +84,7 @@ minus left right = minus (prev left) (prev right)
 export mult: Natural -> Natural -> Natural
 mult NaN _ = NaN
 mult _ NaN = NaN
-mult left right = if left > right then mult0 left right right else mult0 right left left
+mult left right = mult0 left right right
     where
         mult0: Natural -> Natural -> Natural -> Natural
         mult0 (Successor NaturalZero) right result = result
